@@ -16,11 +16,11 @@ class Triangle {
     float a, b, c;
 
     double getPerimeter() {
-        return (a + b + c) / 2;
+        return (a + b + c);
     }
 
     double getArea() {
-        double s = getPerimeter();
+        double s = (a + b + c) / 2;
         return Math.sqrt(s * (s - a) * (s - b) * (s - c));
     }
 }
