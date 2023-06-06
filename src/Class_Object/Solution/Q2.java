@@ -10,7 +10,6 @@ public class Q2 {
     }
 }
 
-
 class Student {
     String name;
     int roll_no;
