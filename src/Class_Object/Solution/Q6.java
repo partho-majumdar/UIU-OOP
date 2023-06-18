@@ -1,7 +1,5 @@
 package Class_Object.Solution;
 
-import java.sql.SQLOutput;
-
 public class Q6 {
     public static void main(String[] args) {
         Triangleee t1 = new Triangleee(4, 5);
@@ -30,8 +28,8 @@ class Triangleee {
 }
 
 /*
-Write a program to print the area of two rectangles having
-sides (4,5) and (5,8) respectively by creating a class named
-'Rectangle' with a method named 'Area' which returns the area
-and length and breadth passed as parameters to its constructor.
+ * Write a program to print the area of two rectangles having
+ * sides (4,5) and (5,8) respectively by creating a class named
+ * 'Rectangle' with a method named 'Area' which returns the area
+ * and length and breadth passed as parameters to its constructor.
  */
