@@ -1,7 +1,5 @@
 package Lab02.Solution;
 
-import java.util.Scanner;
-
 public class Q5 {
     public static void main(String[] args) {
         float radius = 5.5f;
