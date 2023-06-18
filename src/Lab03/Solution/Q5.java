@@ -15,6 +15,7 @@ public class Q5 {
         } else {
             System.out.println("Not Palindrome");
         }
+        input.close();
     }
 
     static int isPalindrome(String word, int len) {
