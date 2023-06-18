@@ -23,5 +23,6 @@ public class Q4 {
                 System.out.printf("%d occur %d times\n", i, occurrences[i]);
             }
         }
+        input.close();
     }
 }
