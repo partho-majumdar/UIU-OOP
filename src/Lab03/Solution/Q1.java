@@ -29,6 +29,9 @@ public class Q1 {
         }
 
         float average = (float) total / count_number;
-        System.out.println(average);
+        System.out.println("Positive: " + positive_count + ", Negative: " + negative_count);
+        System.out.println("Average: " + average);
+
+        input.close();
     }
 }
