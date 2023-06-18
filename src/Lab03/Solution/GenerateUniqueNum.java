@@ -16,7 +16,7 @@ public class GenerateUniqueNum {
         }
     }
 
-    static ArrayList<Integer> genUniqueNum(int n) {
+    public static ArrayList<Integer> genUniqueNum(int n) {
         ArrayList<Integer> unique = new ArrayList<>();
 
         System.out.print("From where you want to print random number: ");
