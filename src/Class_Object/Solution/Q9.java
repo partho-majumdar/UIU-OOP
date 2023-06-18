@@ -28,6 +28,8 @@ public class Q9 {
         System.out.println("Sum: " + add);
         System.out.println("Subtract: " + sub);
         System.out.println("Multiplication: " + multi);
+
+        input.close();
     }
 }
 
@@ -64,7 +66,7 @@ class Complex {
 }
 
 /*
-Print the sum, difference and product of two complex numbers
-by creating a class named 'Complex' with separate methods for
-each operation whose real and imaginary parts are entered by user.
-*/
+ * Print the sum, difference and product of two complex numbers
+ * by creating a class named 'Complex' with separate methods for
+ * each operation whose real and imaginary parts are entered by user.
+ */
