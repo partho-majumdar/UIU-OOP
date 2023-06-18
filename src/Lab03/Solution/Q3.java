@@ -34,5 +34,6 @@ public class Q3 {
                 System.out.println("Student " + k + " score is " + arr[k] + " and grade is D");
             }
         }
+        input.close();
     }
 }
