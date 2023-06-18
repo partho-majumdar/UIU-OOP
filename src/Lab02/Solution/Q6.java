@@ -13,5 +13,7 @@ public class Q6 {
 
         System.out.println("Perimeter: " + perimeter);
         System.out.println("Area: " + area);
+
+        input.close();
     }
 }
