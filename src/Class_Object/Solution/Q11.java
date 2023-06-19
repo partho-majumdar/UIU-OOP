@@ -35,4 +35,7 @@ class AddDistance {
     }
 }
 
-//Add two distances in inch-feet by creating a class named 'AddDistance'. --> 1 feet = 12 inches
+/*
+ * Add two distances in inch-feet by creating a class named 'AddDistance'.
+ * --> 1 feet = 12 inches
+ */
