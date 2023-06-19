@@ -39,6 +39,7 @@ class Studentt {
 }
 
 /*
-Assign and print the roll number, phone number and address of two students having names
-"Sam" and "John" respectively by creating two objects of class 'Student'.
+ * Assign and print the roll number, phone number and address of two students
+ * having names Sam" and "John" respectively by creating two objects of class
+ * 'Student'.
  */
