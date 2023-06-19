@@ -3,20 +3,14 @@ package Class_Object.Solution;
 public class Q3 {
     public static void main(String[] args) {
         Studentt John = new Studentt();
-        John.setDetails(21, "Mirpur 12", "01712345678");
+        John.setDetails(21, "01712345678", "Mirpur 12");
         John.printDetails();
 
         System.out.println();
 
         Studentt Sam = new Studentt();
-        Sam.setDetails(34, "Banani 12", "2441139");
+        Sam.setDetails(34, "2441139", "Banani 12");
         Sam.printDetails();
-
-        System.out.println();
-
-        Studentt Tom = new Studentt();
-        Tom.setDetails(54, "01732280764", "Dhaka East");
-        Tom.printDetails();
     }
 }
 
