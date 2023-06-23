@@ -6,27 +6,27 @@ public class Q6 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         int[] arr = new int[10];
-        int count = 0;
+        int index = 0;
 
         System.out.print("Enter 10 element: ");
         for (int i = 0; i < 10; i++) {
             int num = input.nextInt();
 
-            if (isDistinct(arr, count, num)) {
-                arr[count] = num;
-                count++;
+            if (isDistinct(arr, index, num)) {
+                arr[index] = num;
+                index++;
             }
         }
 
         System.out.print("Distinct numbers: ");
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < index; i++) {
             System.out.print(arr[i] + " ");
         }
         input.close();
     }
 
-    static boolean isDistinct(int[] arr2, int count, int num) {
-        for (int i = 0; i < count; i++) {
+    static boolean isDistinct(int[] arr2, int index, int num) {
+        for (int i = 0; i < index; i++) {
             if (arr2[i] == num) {
                 return false;
             }
