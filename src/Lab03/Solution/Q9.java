@@ -33,7 +33,7 @@ public class Q9 {
         int numQueries = input.nextInt();
 
         for (int i = 0; i < numQueries; i++) {
-            System.out.print("Enter line and index: ");
+            System.out.print("Enter X-th line and Y-th position: ");
             int x = input.nextInt() - 1;
             int y = input.nextInt() - 1;
 
