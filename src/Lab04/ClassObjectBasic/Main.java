@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    public static ArrayList<Icecream> icecreams = new ArrayList<>();
+    public static ArrayList<Icecream> icecreamsObject = new ArrayList<>();
 
     public static void main(String[] args) {
 
@@ -30,35 +30,47 @@ public class Main {
             Icecream other = new Icecream(type, company, price);
 
             boolean flag = true;
-            for (Icecream e : icecreams) {
+            for (Icecream e : icecreamsObject) {
                 if (other.equals(e)) {
                     flag = false;
                     break;
                 }
             }
 
+            /*
+             * ------------ Rule - 02 ---------
+             * for (int i = 0; i < icecreamObj.size(); i++) {
+             * Icecream individualObj = icecreamObj.get(i);
+             * 
+             * if (individualObj.equals(other)) {
+             * flag = false;
+             * break;
+             * }
+             * }
+             */
+
             if (flag) {
-                icecreams.add(other);
+                icecreamsObject.add(other);
             } else {
                 System.out.println("Already exists!");
             }
         }
 
-        for (Icecream e : icecreams) {
+        for (Icecream e : icecreamsObject) {
             System.out.println(e.toString());
         }
 
         searchByCompany("Igloo");
         sortByPrice();
 
-        for (Icecream e : icecreams) {
+        for (Icecream e : icecreamsObject) {
             System.out.println(e.toString());
         }
         input.close();
     }
 
     public static void searchByCompany(String company) {
-        for (Icecream e : icecreams) {
+        for (Icecream e : icecreamsObject) {
             if (e.getIcecreamCompany().equals(company)) {
                 System.out.println(e.toString());
             }
@@ -66,12 +78,12 @@ public class Main {
     }
 
     public static void sortByPrice() {
-        for (int i = 0; i < icecreams.size(); i++) {
-            for (int j = i + 1; j < icecreams.size(); j++) {
-                if (icecreams.get(i).getIcecreamPrice() > icecreams.get(j).getIcecreamPrice()) {
-                    Icecream other = icecreams.get(i);
-                    icecreams.set(i, icecreams.get(j));
-                    icecreams.set(j, other);
+        for (int i = 0; i < icecreamsObject.size(); i++) {
+            for (int j = i + 1; j < icecreamsObject.size(); j++) {
+                if (icecreamsObject.get(i).getIcecreamPrice() > icecreamsObject.get(j).getIcecreamPrice()) {
+                    Icecream other = icecreamsObject.get(i);
+                    icecreamsObject.set(i, icecreamsObject.get(j));
+                    icecreamsObject.set(j, other);
                 }
             }
         }
