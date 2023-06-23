@@ -2,10 +2,8 @@ package Lab03.Solution;
 
 public class Q16 {
     public static void main(String[] args) {
-        int arr[] = { 1, 2, 3, 1, 2, 3 };
+        int arr[] = { 1, 1, 1, 1, 3, 3, 4, 3, 2, 4, 2 };
         int len = arr.length;
-
-        System.out.println(len);
 
         for (int i = 0; i < len - 1; i++) {
             for (int j = i + 1; j < len; j++) {
@@ -20,7 +18,7 @@ public class Q16 {
         }
 
         for (int i = 0; i < len; i++) {
-            System.out.print(arr[i]);
+            System.out.print(arr[i] + " ");
         }
     }
 }
