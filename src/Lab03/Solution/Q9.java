@@ -29,7 +29,7 @@ public class Q9 {
             input.nextLine(); // for flush
         }
 
-        System.out.println("Enter for output line: ");
+        System.out.print("Enter for output line: ");
         int numQueries = input.nextInt();
 
         for (int i = 0; i < numQueries; i++) {
