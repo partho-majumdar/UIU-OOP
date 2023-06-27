@@ -13,5 +13,7 @@ public class Q10 {
         } else if (number % 2 == 0 || number % 3 == 0) {
             System.out.println("True");
         }
+
+        input.close();
     }
 }
