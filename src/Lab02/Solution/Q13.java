@@ -4,7 +4,8 @@ import javax.swing.*;
 
 public class Q13 {
     public static void main(String[] args) {
-        int input1 = Integer.parseInt(JOptionPane.showInputDialog("Enter 0 (convert USD to BDT) and 1 (convert BDT to USD): "));
+        int input1 = Integer
+                .parseInt(JOptionPane.showInputDialog("Enter 0 (convert USD to BDT) and 1 (convert BDT to USD): "));
 
         if (input1 == 0) {
             float val = Float.parseFloat(JOptionPane.showInputDialog("Enter USD: "));
