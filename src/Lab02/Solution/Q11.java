@@ -15,5 +15,7 @@ public class Q11 {
         int days = (int) value_in_day % 365;
 
         System.out.println(years + " years and " + days + " days");
+
+        input.close();
     }
 }
