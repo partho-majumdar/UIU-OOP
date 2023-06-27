@@ -11,5 +11,7 @@ public class Q9 {
 
         double fahrenheit = ((float) (9 / 5) * celsius) + 32;
         System.out.println("Value in fahrenheit: " + fahrenheit);
+
+        input.close();
     }
 }
