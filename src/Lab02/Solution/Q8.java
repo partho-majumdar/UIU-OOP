@@ -20,5 +20,7 @@ public class Q8 {
 
         double miles_per_hour = miles / time_in_hour;
         System.out.println("Miles per hour: " + miles_per_hour);
+
+        input.close();
     }
 }
