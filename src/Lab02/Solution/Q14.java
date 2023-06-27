@@ -6,11 +6,11 @@ public class Q14 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-//        System.out.print("Enter center(p, q) value of p: ");
-//        float p = input.nextFloat();
-//
-//        System.out.print("Enter center(p, q) value of q: ");
-//        float q = input.nextFloat();
+        // System.out.print("Enter center(p, q) value of p: ");
+        // float p = input.nextFloat();
+        //
+        // System.out.print("Enter center(p, q) value of q: ");
+        // float q = input.nextFloat();
 
         float p = 0;
         float q = 0;
@@ -36,5 +36,7 @@ public class Q14 {
         } else if (distance == radius) {
             System.out.println("Point is in the circle");
         }
+
+        input.close();
     }
 }
