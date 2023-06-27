@@ -30,5 +30,7 @@ public class Q12 {
         } else if (dis < 0) {
             System.out.println("This equation has no real roots");
         }
+
+        input.close();
     }
 }
