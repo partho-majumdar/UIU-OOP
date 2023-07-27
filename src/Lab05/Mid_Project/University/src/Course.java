@@ -43,6 +43,14 @@ public class Course {
         this.courseCredit = courseCredit;
     }
 
+    public Faculty getFaculty() {
+        return this.faculty;
+    }
+
+    public void setFaculty(Faculty faculty) {
+        this.faculty = faculty;
+    }
+
     @Override
     public String toString() {
         return "Course{" + "courseCode = '" + courseCode
@@ -90,6 +98,7 @@ public class Course {
 
     public void addFaculty(Faculty other) {
         this.faculty = other;
+        System.out.println("Successfully faculty added");
     }
 
     public void dropFaculty() {
