@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    public static ArrayList<Student> students = new ArrayList<>();
-    public static ArrayList<Faculty> faculties = new ArrayList<>();
-    public static ArrayList<Course> courses = new ArrayList<>();
+    public static ArrayList<Student> studentsMainList = new ArrayList<>();
+    public static ArrayList<Faculty> facultiesMainList = new ArrayList<>();
+    public static ArrayList<Course> coursesMainList = new ArrayList<>();
 
     public static Scanner input = new Scanner(System.in);
 
@@ -35,41 +35,65 @@ public class Main {
                 System.out.print("Enter any option: ");
                 char ip1 = input.next().charAt(0);
 
-                if (ip1 == 'z') {
+                if (ip1 == 'x') {
                     continue;
+
                 } else if (ip1 == 'a') {
                     System.out.println("ID: ");
                     int id = input.nextInt();
+
                     System.out.println("Name: ");
                     String name = input.next();
+
                     System.out.println("CGPA: ");
                     double cg = input.nextDouble();
+
                     Student s = new Student(id, name, cg);
-                    addAStudent(s);
+                    addAStudent(s, s.getStudentId());
+
                 } else if (ip1 == 'b') {
                     System.out.println("ID: ");
                     int id = input.nextInt();
+
                     System.out.println("Name: ");
                     String name = input.next();
+
                     System.out.println("Position: ");
                     String position = input.next();
+
                     Faculty f = new Faculty(id, name, position);
-                    addAFaculty(f);
+                    addAFaculty(f, f.getFacultyId());
+
                 } else if (ip1 == 'c') {
                     System.out.println("Course code: ");
                     String code = input.next();
+
                     System.out.println("Course title: ");
                     String name = input.next();
+
                     System.out.println("Credit: ");
                     double cred = input.nextDouble();
+
                     Course c = new Course(code, name, cred);
-                    addACourse(c);
+                    addACourse(c, c.getCourseCode());
+
                 } else if (ip1 == 'd') {
                     System.out.println("Course code: ");
                     String courseCode = input.next();
+
                     System.out.println("Student ID: ");
                     int sid = input.nextInt();
-                    addAStudentCourse(courseCode, sid);
+
+                    addAStudentToACourse(courseCode, sid);
+
+                } else if (ip1 == 'e') {
+                    System.out.println("Course code: ");
+                    String courseCode = input.next();
+
+                    System.out.println("Faculty ID: ");
+                    int fid = input.nextInt();
+
+                    addAFacultyToACourse(courseCode, fid);
                 }
 
             } else if (ip == 2) {
@@ -121,7 +145,7 @@ public class Main {
                 System.out.println();
                 System.out.println("a. Print all students\nb. Print all courses" +
                         "\nc. Print all faculties\nd. Print information of a student" +
-                        "\ne. Print information of a student\nf. Print information of a course" +
+                        "\ne. Print information of a course\nf. Print information of a faculty" +
                         "\ng. Print student list and faculty information of a course" +
                         "\nh. Print courses taken by a student\nx. Return to main menu");
 
@@ -130,21 +154,38 @@ public class Main {
 
                 if (ip4 == 'x') {
                     continue;
+
                 } else if (ip4 == 'a') {
+                    printAllStudent();
 
                 } else if (ip4 == 'b') {
+                    printAllCourse();
 
                 } else if (ip4 == 'c') {
+                    printAllFaculty();
 
                 } else if (ip4 == 'd') {
+                    System.out.print("Enter student id to see her/him information: ");
+                    int stuId = input.nextInt();
+                    printInfoOfAStudent(stuId);
 
                 } else if (ip4 == 'e') {
+                    System.out.print("Enter course code to see its information: ");
+                    String courseCode = input.next();
+                    printInfoOfACourse(courseCode);
 
                 } else if (ip4 == 'f') {
+                    System.out.print("Enter faculty id to see her/him information: ");
+                    int fId = input.nextInt();
+                    printInfoOfAFaculty(fId);
 
                 } else if (ip4 == 'g') {
+                    printStudentListAndFacultyInfo();
 
                 } else if (ip4 == 'h') {
+                    System.out.println("Enter student id to see her/him courses: ");
+                    int sid = input.nextInt();
+                    printCourseTakenByStudent(sid);
 
                 }
             } else if (ip == 5) {
@@ -178,45 +219,216 @@ public class Main {
         }
     } // End of public static void main
 
-    public static void addAStudent(Student s) {
+    // -----------------------------------------------------------------------------------------------------------------
+    // add new student
+    public static void addAStudent(Student s, int sId) {
         boolean flag = true;
-        for (Student e : students) {
-            if (e.equals(s)) {
+        for (Student e : studentsMainList) {
+            if (e.equals(s) || e.getStudentId() == sId) {
                 flag = false;
                 break;
             }
         }
         if (flag) {
-            students.add(s);
+            studentsMainList.add(s);
             System.out.println("Student added!");
-        } else System.out.println("Already exists!");
+        } else System.out.println("Already exists! or student ID can not be same");
 
     }
 
-    public static void addAFaculty(Faculty f) {
-        faculties.add(f);
+    // add new faculty
+    public static void addAFaculty(Faculty f, int fID) {
+        boolean flag = true;
+        for (Faculty f1 : facultiesMainList) {
+            if (f1.equals(f) || f1.getFacultyId() == fID) {
+                flag = false;
+                break;
+            }
+        }
+        if (flag) {
+            facultiesMainList.add(f);
+            System.out.println("Faculty added");
+        } else {
+            System.out.println("Already exist or faculty ID can not be same");
+        }
     }
 
-    public static void addACourse(Course c) {
-        courses.add(c);
+    // add new course
+    public static void addACourse(Course c, String cCode) {
+        boolean flag = true;
+        for (Course c1 : coursesMainList) {
+            if (c1.equals(c) || c1.getCourseCode().equals(cCode)) {
+                flag = false;
+                break;
+            }
+        }
+        if (flag) {
+            coursesMainList.add(c);
+            System.out.println("Course added");
+        } else {
+            System.out.println("Already exist or course Code can not be same");
+        }
     }
 
-    public static void addAStudentCourse(String courseCode, int sid) {
+    // add a student to a course
+    public static void addAStudentToACourse(String courseCode, int sid) {
         int courseIndex = -1, studentIndex = -1;
-        for (int i = 0; i < courses.size(); i++) {
-            if (courseCode.equals(courses.get(i).getCourseCode())) {
+        for (int i = 0; i < coursesMainList.size(); i++) {
+            if (courseCode.equals(coursesMainList.get(i).getCourseCode())) {
                 courseIndex = i;
                 break;
             }
         }
-        for (int i = 0; i < students.size(); i++) {
-            if (sid == students.get(i).getStudentId()) {
+        for (int i = 0; i < studentsMainList.size(); i++) {
+            if (sid == studentsMainList.get(i).getStudentId()) {
                 studentIndex = i;
                 break;
             }
         }
         if (studentIndex != -1 && courseIndex != -1) {
-            courses.get(courseIndex).addStudent(students.get(studentIndex));
+            coursesMainList.get(courseIndex).addStudent(studentsMainList.get(studentIndex));
+            System.out.println("Successfully add student to a course");
+        } else {
+            System.out.println("Course or student not found");
         }
     }
+
+    // add a faculty to a course
+    public static void addAFacultyToACourse(String courseCode, int facultyID) {
+        int courseIndex = -1, facultyIndex = -1;
+        for (int i = 0; i < coursesMainList.size(); i++) {
+            if (courseCode.equals(coursesMainList.get(i).getCourseCode())) {
+                courseIndex = i;
+                break;
+            }
+        }
+        for (int i = 0; i < facultiesMainList.size(); i++) {
+            if (facultyID == facultiesMainList.get(i).getFacultyId()) {
+                facultyIndex = i;
+                break;
+            }
+        }
+        if (courseIndex != -1 && facultyIndex != -1) {
+            coursesMainList.get(courseIndex).addFaculty(facultiesMainList.get(facultyIndex));
+        } else {
+            System.out.println("Course or faculty not found");
+        }
+    }
+
+    //------------------------------------------------------------------------------------------------------------------
+    // delete a student
+
+    // delete a course
+
+    // delete a faculty
+
+    // delete a student to a course
+
+    // delete a faculty to a course
+
+    //------------------------------------------------------------------------------------------------------------------
+    // update a student
+
+    // update a course
+
+    // update a faculty
+
+    // update a student to a course
+
+    // update a faculty to a course
+
+    //------------------------------------------------------------------------------------------------------------------
+    // print all student
+    public static void printAllStudent() {
+        for (Student s : studentsMainList) {
+            System.out.println(s.toString());
+        }
+    }
+
+    // print all course
+    public static void printAllCourse() {
+        for (Course c : coursesMainList) {
+            System.out.println(c.toString());
+        }
+    }
+
+    // print all faculty
+    public static void printAllFaculty() {
+        for (Faculty f : facultiesMainList) {
+            System.out.println(f.toString());
+        }
+    }
+
+    // print information of a student
+    public static void printInfoOfAStudent(int sID) {
+        for (Student s : studentsMainList) {
+            if (s.getStudentId() == sID) {
+                System.out.println(s.toString());
+            }
+        }
+    }
+
+    // print information of a course
+    public static void printInfoOfACourse(String cCode) {
+        for (Course c : coursesMainList) {
+            if (c.getCourseCode().equals(cCode)) {
+                System.out.println(c.toString());
+            }
+        }
+    }
+
+    // print information of a faculty
+    public static void printInfoOfAFaculty(int fID) {
+        for (Faculty f : facultiesMainList) {
+            if (f.getFacultyId() == fID) {
+                System.out.println(f.toString());
+            }
+        }
+    }
+
+    // print student list and faculty information
+    public static void printStudentListAndFacultyInfo() {
+        for (Course c : coursesMainList) {
+            System.out.println(c.getStudentList().toString());
+            Faculty faculty = c.getFaculty();
+            if (faculty != null) {
+                System.out.println(faculty.toString());
+            } else {
+                System.out.println("Faculty not found");
+                System.out.println();
+            }
+        }
+    }
+
+    // Print courses taken by a student
+    public static void printCourseTakenByStudent(int sId) {
+        for (Course c : coursesMainList) {
+            ArrayList<Student> studentsList = c.getStudentList();
+            for (Student s : studentsList) {
+                if (s.getStudentId() == sId) {
+                    System.out.println("Course Code: " + c.getCourseCode());
+                    System.out.println("Course Title: " + c.getCourseTitle());
+                    System.out.println("Course Credit: " + c.getCourseCredit());
+                    System.out.println();
+                }
+            }
+        }
+    }
+
+    //------------------------------------------------------------------------------------------------------------------
+    // search a student
+
+    // search a course
+
+    // search a faculty
+
+    // search whether a student takes a course
+
+    // search whether a faculty teaches a course
+
+    // search courses taken by a student
+
+    // search course taught by a faculty
+
+    //------------------------------------------------------------------------------------------------------------------
 }
