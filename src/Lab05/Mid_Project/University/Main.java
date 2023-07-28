@@ -14,7 +14,6 @@ public class Main {
 
     public static Scanner input = new Scanner(System.in);
 
-
     public static void main(String[] args) {
         while (true) {
             System.out.println();
@@ -172,7 +171,7 @@ public class Main {
                     updateAStudentToACourse(cCode, sId);
 
                 } else if (ip3 == 'e') {
-                    System.out.println("Enter course cod to update a faculty to a course: ");
+                    System.out.println("Enter course code to update a faculty to a course: ");
                     String cCode = input.next();
                     updateAFacultyToACourse(cCode);
 
@@ -236,20 +235,92 @@ public class Main {
 
                 if (ip5 == 'x') {
                     continue;
+
                 } else if (ip5 == 'a') {
+                    System.out.println("Enter student id to search: ");
+                    int sId = input.nextInt();
+                    Student ans = searchStudent(sId);
+                    if (ans != null) {
+                        System.out.println(ans.toString());
+                    } else {
+                        System.out.println("Student not found");
+                    }
 
                 } else if (ip5 == 'b') {
+                    System.out.println("Enter course code to search: ");
+                    String cCode = input.next();
+                    Course ans = searchCourse(cCode);
+                    if (ans != null) {
+                        System.out.println(ans.toString());
+                    } else {
+                        System.out.println("Course not found");
+                    }
 
                 } else if (ip5 == 'c') {
+                    System.out.println("Enter faculty id to search: ");
+                    int fId = input.nextInt();
+                    Faculty ans = searchFaculty(fId);
+                    if (ans != null) {
+                        System.out.println(ans.toString());
+                    } else {
+                        System.out.println("Faculty not found");
+                    }
 
                 } else if (ip5 == 'd') {
+                    System.out.println("Enter student id to search whether a student takes a course: ");
+                    int sId = input.nextInt();
+
+                    System.out.println("Enter course code to search whether a student takes a course: ");
+                    String cCode = input.next();
+
+                    boolean ans = whetherAStudentTakeACourse(sId, cCode);
+
+                    if (ans) {
+                        System.out.println("Yes student take this course");
+                    } else {
+                        System.out.println("No student found");
+                    }
 
                 } else if (ip5 == 'e') {
+                    System.out.println("Enter faculty id to search whether a student takes a course: ");
+                    int fId = input.nextInt();
+
+                    System.out.println("Enter course code to search whether a student takes a course: ");
+                    String cCode = input.next();
+
+                    boolean ans = whetherAFacultyTeachesACourse(fId, cCode);
+
+                    if (ans) {
+                        System.out.println("Yes faculty take this course");
+                    } else {
+                        System.out.println("No faculty found");
+                    }
 
                 } else if (ip5 == 'f') {
+                    System.out.println("Enter student id to search courses taken by a student: ");
+                    int sId = input.nextInt();
+                    ArrayList<Course> ans = searchCoursesTakenByStudent(sId);
+                    if (!ans.isEmpty()) {
+                        System.out.println("These courses are taken by student: ");
+                        for (Course i : ans) {
+                            System.out.println(i.toString());
+                        }
+                    } else {
+                        System.out.println("No course found");
+                    }
 
                 } else if (ip5 == 'g') {
-
+                    System.out.println("Enter faculty id to search course taught by a faculty: ");
+                    int fId = input.nextInt();
+                    ArrayList<Course> ans = searchCoursesTaughtByFaculty(fId);
+                    if (!ans.isEmpty()) {
+                        System.out.println("These course are taught by faculty: ");
+                        for (Course j : ans) {
+                            System.out.println(j.toString());
+                        }
+                    } else {
+                        System.out.println("No faculty found");
+                    }
                 }
             }
         }
@@ -710,18 +781,93 @@ public class Main {
 
     //------------------------------------------------------------------------------------------------------------------
     // search a student
+    public static Student searchStudent(int sId) {
+        for (Student s : studentsMainList) {
+            if (s.getStudentId() == sId) {
+                return s;
+            }
+        }
+        return null;
+    }
 
     // search a course
+    public static Course searchCourse(String cCode) {
+        for (Course c : coursesMainList) {
+            if (c.getCourseCode().equals(cCode)) {
+                return c;
+            }
+        }
+        return null;
+    }
 
     // search a faculty
+    public static Faculty searchFaculty(int fId) {
+        for (Faculty f : facultiesMainList) {
+            if (f.getFacultyId() == fId) {
+                return f;
+            }
+        }
+        return null;
+    }
 
     // search whether a student takes a course
+    public static boolean whetherAStudentTakeACourse(int sId, String cCode) {
+        Student s = searchStudent(sId);
+        if (s == null) {
+            return false;
+        }
+
+        Course c = searchCourse(cCode);
+        if (c == null) {
+            return false;
+        }
+        return c.getStudentList().contains(s);
+    }
 
     // search whether a faculty teaches a course
+    public static boolean whetherAFacultyTeachesACourse(int fId, String cCode) {
+        Faculty f = searchFaculty(fId);
+        if (f == null) {
+            return false;
+        }
+
+        Course c = searchCourse(cCode);
+        if (c == null) {
+            return false;
+        }
+        return c.getFaculty() == f;
+    }
 
     // search courses taken by a student
+    public static ArrayList<Course> searchCoursesTakenByStudent(int sId) {
+        ArrayList<Course> coursesTaken = new ArrayList<>();
+
+        for (Course c : coursesMainList) {
+            ArrayList<Student> studentsList = c.getStudentList();
+
+            for (Student s : studentsList) {
+                if (s.getStudentId() == sId) {
+                    coursesTaken.add(c);
+                    break;
+                }
+            }
+        }
+        return coursesTaken;
+    }
 
     // search course taught by a faculty
+    public static ArrayList<Course> searchCoursesTaughtByFaculty(int fId) {
+        ArrayList<Course> coursesTaught = new ArrayList<>();
+
+        for (Course c : coursesMainList) {
+            Faculty faculty = c.getFaculty();
+
+            if (faculty != null && faculty.getFacultyId() == fId) {
+                coursesTaught.add(c);
+            }
+        }
+        return coursesTaught;
+    }
 
     //------------------------------------------------------------------------------------------------------------------
 }
