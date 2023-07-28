@@ -147,15 +147,34 @@ public class Main {
 
                 if (ip3 == 'x') {
                     continue;
+
                 } else if (ip3 == 'a') {
+                    System.out.println("Enter student id to update info: ");
+                    int sId = input.nextInt();
+                    updateAStudent(sId);
 
                 } else if (ip3 == 'b') {
+                    System.out.println("Enter faculty id to update info: ");
+                    int fId = input.nextInt();
+                    updateAFaculty(fId);
 
                 } else if (ip3 == 'c') {
+                    System.out.println("Enter course code to update info: ");
+                    String cCode = input.next();
+                    updateACourse(cCode);
 
                 } else if (ip3 == 'd') {
+                    System.out.println("Enter course code to update a student from a course: ");
+                    String cCode = input.next();
+
+                    System.out.println("Enter student id to update a student from a course: ");
+                    int sId = input.nextInt();
+                    updateAStudentToACourse(cCode, sId);
 
                 } else if (ip3 == 'e') {
+                    System.out.println("Enter course cod to update a faculty to a course: ");
+                    String cCode = input.next();
+                    updateAFacultyToACourse(cCode);
 
                 }
             } else if (ip == 4) {
@@ -440,14 +459,176 @@ public class Main {
 
     //------------------------------------------------------------------------------------------------------------------
     // update a student
+    public static void updateAStudent(int sID) {
+        int studentIndex = -1;
+        for (int i = 0; i < studentsMainList.size(); i++) {
+            if (studentsMainList.get(i).getStudentId() == sID) {
+                studentIndex = i;
+                break;
+            }
+        }
+        if (studentIndex != -1) {
+            Student newStudent = studentsMainList.get(studentIndex);
+
+            System.out.println("Enter student new id: ");
+            int newStuId = input.nextInt();
+            newStudent.setStudentId(newStuId);
+
+            System.out.println("Enter student new name: ");
+            String newStuName = input.next();
+            newStudent.setStudentName(newStuName);
+
+            System.out.println("Enter student new cgpa: ");
+            double newStuCgpa = input.nextDouble();
+            newStudent.setStudentCgpa(newStuCgpa);
+
+            System.out.println("Student info updated");
+
+        } else {
+            System.out.println("Student not found");
+        }
+    }
 
     // update a course
+    public static void updateACourse(String cCode) {
+        int courseIndex = -1;
+        for (int i = 0; i < coursesMainList.size(); i++) {
+            if (coursesMainList.get(i).getCourseCode().equals(cCode)) {
+                courseIndex = i;
+                break;
+            }
+        }
+        if (courseIndex != -1) {
+            Course newCourse = coursesMainList.get(courseIndex);
+
+            System.out.println("Enter course new code: ");
+            String newCCode = input.next();
+            newCourse.setCourseCode(newCCode);
+
+            System.out.println("Enter course new title: ");
+            String newCTitle = input.next();
+            newCourse.setCourseTitle(newCTitle);
+
+            System.out.println("Enter course new credit: ");
+            double newCCredit = input.nextDouble();
+            newCourse.setCourseCredit(newCCredit);
+
+            System.out.println("Course info updated");
+
+        } else {
+            System.out.println("Course not found");
+        }
+    }
 
     // update a faculty
+    public static void updateAFaculty(int fId) {
+        int courseIndex = -1;
+        for (int i = 0; i < facultiesMainList.size(); i++) {
+            if (facultiesMainList.get(i).getFacultyId() == fId) {
+                courseIndex = i;
+                break;
+            }
+        }
+        if (courseIndex != -1) {
+            Faculty newFaculty = facultiesMainList.get(courseIndex);
+
+            System.out.print("Enter faculty new id: ");
+            int newFid = input.nextInt();
+            newFaculty.setFacultyId(newFid);
+
+            System.out.println("Enter faulty new name: ");
+            String newFName = input.next();
+            newFaculty.setFacultyName(newFName);
+
+            System.out.print("Enter faculty new position: ");
+            String newFPosition = input.next();
+            newFaculty.setFacultyPosition(newFPosition);
+
+            System.out.println("Faculty info updated");
+
+        } else {
+            System.out.println("Faculty not found");
+        }
+    }
 
     // update a student to a course
+    public static void updateAStudentToACourse(String cCode, int sId) {
+        int courseIndex = -1;
+        for (int i = 0; i < coursesMainList.size(); i++) {
+            if (coursesMainList.get(i).getCourseCode().equals(cCode)) {
+                courseIndex = i;
+                break;
+            }
+        }
+        if (courseIndex != -1) {
+            Course c = coursesMainList.get(courseIndex);
+            ArrayList<Student> newStuList = c.getStudentList();
+
+            int studentIndex = -1;
+            for (int i = 0; i < newStuList.size(); i++) {
+                if (newStuList.get(i).getStudentId() == sId) {
+                    studentIndex = i;
+                    break;
+                }
+            }
+            if (studentIndex != -1) {
+                Student newStudent = newStuList.get(studentIndex);
+
+                System.out.println("Enter student new id: ");
+                int newStuId = input.nextInt();
+                newStudent.setStudentId(newStuId);
+
+                System.out.println("Enter student new name: ");
+                String newStuName = input.next();
+                newStudent.setStudentName(newStuName);
+
+                System.out.println("Enter student new cgpa: ");
+                double newStuCgpa = input.nextDouble();
+                newStudent.setStudentCgpa(newStuCgpa);
+
+                System.out.println("Student info updated in a course");
+            } else {
+                System.out.println("Student not enrolled in the course ");
+            }
+        } else {
+            System.out.println("Course not found!");
+        }
+    }
 
     // update a faculty to a course
+    public static void updateAFacultyToACourse(String cCode) {
+        int courseIndex = -1;
+        for (int i = 0; i < coursesMainList.size(); i++) {
+            if (coursesMainList.get(i).getCourseCode().equals(cCode)) {
+                courseIndex = i;
+                break;
+            }
+        }
+        if (courseIndex != -1) {
+            Course c = coursesMainList.get(courseIndex);
+            Faculty newFaculty = c.getFaculty();
+            if (newFaculty != null) {
+
+                System.out.print("Enter faculty new id: ");
+                int newFid = input.nextInt();
+                newFaculty.setFacultyId(newFid);
+
+                System.out.println("Enter faulty new name: ");
+                String newFName = input.next();
+                newFaculty.setFacultyName(newFName);
+
+                System.out.print("Enter faculty new position: ");
+                String newFPosition = input.next();
+                newFaculty.setFacultyPosition(newFPosition);
+
+                System.out.println("Faculty info updated");
+            } else {
+                System.out.println("No faculty is found");
+            }
+        } else {
+            System.out.println("Course not found!");
+        }
+    }
 
     //------------------------------------------------------------------------------------------------------------------
     // print all student
