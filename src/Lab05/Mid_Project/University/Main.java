@@ -107,16 +107,33 @@ public class Main {
 
                 if (ip2 == 'x') {
                     continue;
+
                 } else if (ip2 == 'a') {
+                    System.out.println("Enter student id that you want to delete: ");
+                    int sid = input.nextInt();
+                    deleteAStudent(sid);
 
                 } else if (ip2 == 'b') {
+                    System.out.println("Enter course code that you want to delete: ");
+                    String courseCode = input.next();
+                    deleteACourse(courseCode);
 
                 } else if (ip2 == 'c') {
+                    System.out.println("Enter faculty id that you want to delete: ");
+                    int fId = input.nextInt();
+                    deleteAFaculty(fId);
 
                 } else if (ip2 == 'd') {
+                    System.out.println("Enter course code to delete student from course: ");
+                    String cCode = input.next();
+                    System.out.println("Enter student id to delete student from course: ");
+                    int sID = input.nextInt();
+                    deleteAStudentFromCourse(cCode, sID);
 
                 } else if (ip2 == 'e') {
-
+                    System.out.println("Enter course code to remove a faculty: ");
+                    String cCode = input.next();
+                    deleteAFacultyFromCourse(cCode);
                 }
 
             } else if (ip == 3) {
@@ -232,8 +249,9 @@ public class Main {
         if (flag) {
             studentsMainList.add(s);
             System.out.println("Student added!");
-        } else System.out.println("Already exists! or student ID can not be same");
-
+        } else {
+            System.out.println("Already exists! or student ID can not be same");
+        }
     }
 
     // add new faculty
@@ -317,14 +335,108 @@ public class Main {
 
     //------------------------------------------------------------------------------------------------------------------
     // delete a student
+    public static void deleteAStudent(int sId) {
+        int studentIndex = -1;
+        for (int i = 0; i < studentsMainList.size(); i++) {
+            if (studentsMainList.get(i).getStudentId() == sId) {
+                studentIndex = i;
+                break;
+            }
+        }
+        if (studentIndex != -1) {
+            studentsMainList.remove(studentIndex);
+            System.out.println("Successfully remove a student");
+        } else {
+            System.out.println("Student not found");
+        }
+    }
 
     // delete a course
+    public static void deleteACourse(String cCode) {
+        int courseIndex = -1;
+        for (int i = 0; i < coursesMainList.size(); i++) {
+            if (coursesMainList.get(i).getCourseCode().equals(cCode)) {
+                courseIndex = i;
+            }
+        }
+        if (courseIndex != -1) {
+            coursesMainList.remove(courseIndex);
+            System.out.println("Successfully remove a course");
+        } else {
+            System.out.println("Course not found");
+        }
+    }
 
     // delete a faculty
+    public static void deleteAFaculty(int fId) {
+        int facultyIndex = -1;
+        for (int i = 0; i < facultiesMainList.size(); i++) {
+            if (facultiesMainList.get(i).getFacultyId() == fId) {
+                facultyIndex = i;
+                break;
+            }
+        }
+        if (facultyIndex != -1) {
+            facultiesMainList.remove(facultyIndex);
+            System.out.println("Successfully remove a faculty");
+        } else {
+            System.out.println("Faculty not found");
+        }
+    }
 
-    // delete a student to a course
+    // delete a student from a course
+    public static void deleteAStudentFromCourse(String courseCode, int studentId) {
+        int courseIndex = -1;
+        for (int i = 0; i < coursesMainList.size(); i++) {
+            if (coursesMainList.get(i).getCourseCode().equals(courseCode)) {
+                courseIndex = i;
+                break;
+            }
+        }
+        if (courseIndex != -1) {
+            Course c = coursesMainList.get(courseIndex);
+            ArrayList<Student> studentList = c.getStudentList();
+            int studentIndex = -1;
+            for (int i = 0; i < studentList.size(); i++) {
+                if (studentList.get(i).getStudentId() == studentId) {
+                    studentIndex = i;
+                    break;
+                }
+            }
+            if (studentIndex != -1) {
+                studentList.remove(studentIndex);
+                c.setNumberOfStudents(studentList.size());
+                System.out.println("Successfully student removed from the course");
+            } else {
+                System.out.println("Student not enrolled in the course ");
+            }
+        } else {
+            System.out.println("Course not found!");
+        }
+    }
 
-    // delete a faculty to a course
+    // delete a faculty from a course
+    public static void deleteAFacultyFromCourse(String courseCode) {
+        int courseIndex = -1;
+        for (int i = 0; i < coursesMainList.size(); i++) {
+            if (coursesMainList.get(i).getCourseCode().equals(courseCode)) {
+                courseIndex = i;
+                break;
+            }
+        }
+        if (courseIndex != -1) {
+            Course c = coursesMainList.get(courseIndex);
+            Faculty faculty = c.getFaculty();
+            if (faculty != null) {
+                c.dropFaculty();
+                System.out.println("Successfully faculty removed from the course");
+            } else {
+                System.out.println("No faculty found in the course ");
+            }
+        } else {
+            System.out.println("Course not found!");
+        }
+    }
 
     //------------------------------------------------------------------------------------------------------------------
     // update a student
