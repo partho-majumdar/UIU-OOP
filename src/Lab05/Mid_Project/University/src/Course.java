@@ -116,6 +116,10 @@ public class Course {
         return this.numberOfStudents;
     }
 
+    public void setNumberOfStudents(int numberOfStudents) {
+        this.numberOfStudents = numberOfStudents;
+    }
+
     public ArrayList<Student> getStudentList() {
         return studentlist;
     }
