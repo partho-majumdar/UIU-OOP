@@ -93,6 +93,8 @@ public class Main {
                     int fid = input.nextInt();
 
                     addAFacultyToACourse(courseCode, fid);
+                } else {
+                    System.out.println("\nEnter valid input");
                 }
 
             } else if (ip == 2) {
@@ -133,6 +135,8 @@ public class Main {
                     System.out.println("Enter course code to remove a faculty: ");
                     String cCode = input.next();
                     deleteAFacultyFromCourse(cCode);
+                } else {
+                    System.out.println("\nEnter valid input");
                 }
 
             } else if (ip == 3) {
@@ -175,7 +179,10 @@ public class Main {
                     String cCode = input.next();
                     updateAFacultyToACourse(cCode);
 
+                } else {
+                    System.out.println("\nEnter valid input");
                 }
+
             } else if (ip == 4) {
                 System.out.println();
                 System.out.println("a. Print all students\nb. Print all courses" +
@@ -222,7 +229,10 @@ public class Main {
                     int sid = input.nextInt();
                     printCourseTakenByStudent(sid);
 
+                } else {
+                    System.out.println("\nEnter valid input");
                 }
+
             } else if (ip == 5) {
                 System.out.println();
                 System.out.println("a. Search a students\nb. Search a course" +
@@ -321,7 +331,13 @@ public class Main {
                     } else {
                         System.out.println("No faculty found");
                     }
+                } else {
+                    System.out.println("\nEnter valid input");
                 }
+
+            } else {
+                System.out.println("Enter valid input");
+                continue;
             }
         }
     } // End of public static void main
