@@ -273,7 +273,10 @@ public class Main {
                     int sId = input.nextInt();
                     Student ans = searchStudent(sId);
                     if (ans != null) {
-                        System.out.println(ans.toString());
+                        System.out.println("Student id: " + ans.getStudentId());
+                        System.out.println("Student name: " + ans.getStudentName());
+                        System.out.println("Student cgpa: " + ans.getStudentCgpa());
+                        System.out.println();
                     } else {
                         System.out.println("Student not found");
                     }
@@ -283,7 +286,10 @@ public class Main {
                     String cCode = input.next();
                     Course ans = searchCourse(cCode);
                     if (ans != null) {
-                        System.out.println(ans.toString());
+                        System.out.println("Course code: " + ans.getCourseCode());
+                        System.out.println("Course title: " + ans.getCourseTitle());
+                        System.out.println("Course credit: " + ans.getCourseCredit());
+                        System.out.println();
                     } else {
                         System.out.println("Course not found");
                     }
@@ -293,7 +299,10 @@ public class Main {
                     int fId = input.nextInt();
                     Faculty ans = searchFaculty(fId);
                     if (ans != null) {
-                        System.out.println(ans.toString());
+                        System.out.println("Faculty id: " + ans.getFacultyId());
+                        System.out.println("Faculty name: " + ans.getFacultyName());
+                        System.out.println("Faculty position: " + ans.getFacultyPosition());
+                        System.out.println();
                     } else {
                         System.out.println("Faculty not found");
                     }
@@ -335,7 +344,10 @@ public class Main {
                     if (!ans.isEmpty()) {
                         System.out.println("These courses are taken by student: ");
                         for (Course i : ans) {
-                            System.out.println(i.toString());
+                            System.out.println("Course code: " + i.getCourseCode());
+                            System.out.println("Course title: " + i.getCourseTitle());
+                            System.out.println("Course credit: " + i.getCourseCredit());
+                            System.out.println();
                         }
                     } else {
                         System.out.println("No course found");
@@ -348,7 +360,10 @@ public class Main {
                     if (!ans.isEmpty()) {
                         System.out.println("These course are taught by faculty: ");
                         for (Course j : ans) {
-                            System.out.println(j.toString());
+                            System.out.println("Course code: " + j.getCourseCode());
+                            System.out.println("Course title: " + j.getCourseTitle());
+                            System.out.println("Course credit: " + j.getCourseCredit());
+                            System.out.println();
                         }
                     } else {
                         System.out.println("No faculty found");
@@ -359,7 +374,6 @@ public class Main {
 
             } else {
                 System.out.println("Enter valid input");
-                continue;
             }
         }
     } // End of public static void main
@@ -750,7 +764,10 @@ public class Main {
     // print all course
     public static void printAllCourse() {
         for (Course c : coursesMainList) {
-            System.out.println(c.toString());
+            System.out.println("Course code: " + c.getCourseCode());
+            System.out.println("Course title: " + c.getCourseTitle());
+            System.out.println("Course credit: " + c.getCourseCredit());
+            System.out.println();
         }
     }
 
@@ -765,7 +782,10 @@ public class Main {
     public static void printInfoOfAStudent(int sID) {
         for (Student s : studentsMainList) {
             if (s.getStudentId() == sID) {
-                System.out.println(s.toString());
+                System.out.println("Student id: " + s.getStudentId());
+                System.out.println("Student name: " + s.getStudentName());
+                System.out.println("Student cgpa: " + s.getStudentCgpa());
+                System.out.println();
             }
         }
     }
@@ -774,7 +794,10 @@ public class Main {
     public static void printInfoOfACourse(String cCode) {
         for (Course c : coursesMainList) {
             if (c.getCourseCode().equals(cCode)) {
-                System.out.println(c.toString());
+                System.out.println("Course code: " + c.getCourseCode());
+                System.out.println("Course title: " + c.getCourseTitle());
+                System.out.println("Course credit: " + c.getCourseCredit());
+                System.out.println();
             }
         }
     }
@@ -783,21 +806,30 @@ public class Main {
     public static void printInfoOfAFaculty(int fID) {
         for (Faculty f : facultiesMainList) {
             if (f.getFacultyId() == fID) {
-                System.out.println(f.toString());
+                System.out.println("Faculty id: " + f.getFacultyId());
+                System.out.println("Faculty name: " + f.getFacultyName());
+                System.out.println("Faculty position: " + f.getFacultyPosition());
+                System.out.println();
             }
         }
     }
 
     // print student list and faculty information
     public static void printStudentListAndFacultyInfo() {
+        int flag = 0;
         for (Course c : coursesMainList) {
             System.out.println(c.getStudentList().toString());
+            System.out.println();
             Faculty faculty = c.getFaculty();
+
             if (faculty != null) {
-                System.out.println(faculty.toString());
-            } else {
-                System.out.println("Faculty not found");
+                System.out.println("Faculty id: " + faculty.getFacultyId());
+                System.out.println("Faculty name: " + faculty.getFacultyName());
+                System.out.println("Faculty position: " + faculty.getFacultyPosition());
                 System.out.println();
+                flag = 1;
+            } else if (flag == 0) {
+                System.out.println("Faculty not found");
             }
         }
     }
