@@ -27,9 +27,13 @@ public class Main {
 
             if (ip == 1) {
                 System.out.println();
-                System.out.println("a. Add a student\nb. Add a faculty" +
-                        "\nc. Add a course\nd. Add a student to a course" +
-                        "\ne. Add a faculty to a course\nx. Return to main menu");
+                System.out.println("""
+                        a. Add a student
+                        b. Add a faculty
+                        c. Add a course
+                        d. Add a student to a course
+                        e. Add a faculty to a course
+                        x. Return to main menu""");
 
                 System.out.print("Enter any option: ");
                 char ip1 = input.next().charAt(0);
@@ -99,9 +103,13 @@ public class Main {
 
             } else if (ip == 2) {
                 System.out.println();
-                System.out.println("a. Delete a student\nb. Delete a faculty" +
-                        "\nc. Delete a course\nd. Delete a student to a course" +
-                        "\ne. Delete a faculty to a course\nx. Return to main menu");
+                System.out.println("""
+                        a. Delete a student
+                        b. Delete a faculty
+                        c. Delete a course
+                        d. Delete a student to a course
+                        e. Delete a faculty to a course
+                        x. Return to main menu""");
 
                 System.out.print("Enter any option: ");
                 char ip2 = input.next().charAt(0);
@@ -141,9 +149,13 @@ public class Main {
 
             } else if (ip == 3) {
                 System.out.println();
-                System.out.println("a. Update a student\nb. Update a faculty" +
-                        "\nc. Update a course\nd. Update a student to a course" +
-                        "\ne. Update a faculty to a course\nx. Return to main menu");
+                System.out.println("""
+                        a. Update a student
+                        b. Update a faculty
+                        c. Update a course
+                        d. Update a student to a course
+                        e. Update a faculty to a course
+                        x. Return to main menu""");
 
                 System.out.print("Enter any option: ");
                 char ip3 = input.next().charAt(0);
@@ -185,11 +197,16 @@ public class Main {
 
             } else if (ip == 4) {
                 System.out.println();
-                System.out.println("a. Print all students\nb. Print all courses" +
-                        "\nc. Print all faculties\nd. Print information of a student" +
-                        "\ne. Print information of a course\nf. Print information of a faculty" +
-                        "\ng. Print student list and faculty information of a course" +
-                        "\nh. Print courses taken by a student\nx. Return to main menu");
+                System.out.println("""
+                        a. Print all students
+                        b. Print all courses
+                        c. Print all faculties
+                        d. Print information of a student
+                        e. Print information of a course
+                        f. Print information of a faculty
+                        g. Print student list and faculty information of a course
+                        h. Print courses taken by a student
+                        x. Return to main menu""");
 
                 System.out.print("Enter any option: ");
                 char ip4 = input.next().charAt(0);
@@ -235,10 +252,15 @@ public class Main {
 
             } else if (ip == 5) {
                 System.out.println();
-                System.out.println("a. Search a students\nb. Search a course" +
-                        "\nc. Search a faculty\nd. Search whether a student takes a course" +
-                        "\ne. Search whether a faculty teaches a course\nf. Search courses taken by a student" +
-                        "\ng. Search course taught by a faculty\nx. Return to main menu");
+                System.out.println("""
+                        a. Search a students
+                        b. Search a course
+                        c. Search a faculty
+                        d. Search whether a student takes a course
+                        e. Search whether a faculty teaches a course
+                        f. Search courses taken by a student
+                        g. Search course taught by a faculty
+                        x. Return to main menu""");
 
                 System.out.print("Enter any option: ");
                 char ip5 = input.next().charAt(0);
@@ -342,7 +364,7 @@ public class Main {
         }
     } // End of public static void main
 
-    // -----------------------------------------------------------------------------------------------------------------
+    //---------------------------------------------------*****----------------------------------------------------------
     // add new student
     public static void addAStudent(Student s, int sId) {
         boolean flag = true;
@@ -439,7 +461,7 @@ public class Main {
         }
     }
 
-    //------------------------------------------------------------------------------------------------------------------
+    //---------------------------------------------------*****----------------------------------------------------------
     // delete a student
     public static void deleteAStudent(int sId) {
         int studentIndex = -1;
@@ -544,7 +566,7 @@ public class Main {
         }
     }
 
-    //------------------------------------------------------------------------------------------------------------------
+    //---------------------------------------------------*****----------------------------------------------------------
     // update a student
     public static void updateAStudent(int sID) {
         int studentIndex = -1;
@@ -717,7 +739,7 @@ public class Main {
         }
     }
 
-    //------------------------------------------------------------------------------------------------------------------
+    //---------------------------------------------------*****----------------------------------------------------------
     // print all student
     public static void printAllStudent() {
         for (Student s : studentsMainList) {
@@ -795,7 +817,7 @@ public class Main {
         }
     }
 
-    //------------------------------------------------------------------------------------------------------------------
+    //---------------------------------------------------*****----------------------------------------------------------
     // search a student
     public static Student searchStudent(int sId) {
         for (Student s : studentsMainList) {
@@ -885,5 +907,5 @@ public class Main {
         return coursesTaught;
     }
 
-    //------------------------------------------------------------------------------------------------------------------
+    //---------------------------------------------------*****----------------------------------------------------------
 }
