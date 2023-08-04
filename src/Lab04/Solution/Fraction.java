@@ -32,31 +32,31 @@ public class Fraction {
         return "Numerator: " + this.numerator + ", Denominator " + this.denominator;
     }
 
-    public void add(Fraction fraction) {
-        int newDenominator = this.denominator * fraction.denominator;
-        int newNumerator = (this.numerator * fraction.denominator) + (fraction.numerator * this.denominator);
+    public void add(Fraction other) {
+        int newDenominator = this.denominator * other.denominator;
+        int newNumerator = (this.numerator * other.denominator) + (other.numerator * this.denominator);
         this.numerator = newNumerator;
         this.denominator = newDenominator;
         simplify();
     }
 
-    public void subtract(Fraction fraction) {
-        int newDenominator = this.denominator * fraction.denominator;
-        int newNumerator = (this.numerator * fraction.denominator) - (fraction.numerator * this.denominator);
+    public void subtract(Fraction other) {
+        int newDenominator = this.denominator * other.denominator;
+        int newNumerator = (this.numerator * other.denominator) - (other.numerator * this.denominator);
         this.numerator = newNumerator;
         this.denominator = newDenominator;
         simplify();
     }
 
-    public void multiply(Fraction fraction) {
-        this.numerator *= fraction.numerator;
-        this.denominator *= fraction.denominator;
+    public void multiply(Fraction other) {
+        this.numerator *= other.numerator;
+        this.denominator *= other.denominator;
         simplify();
     }
 
-    public void divide(Fraction fraction) {
-        this.numerator *= fraction.denominator;
-        this.denominator *= fraction.numerator;
+    public void divide(Fraction other) {
+        this.numerator *= other.denominator;
+        this.denominator *= other.numerator;
         simplify();
     }
 
