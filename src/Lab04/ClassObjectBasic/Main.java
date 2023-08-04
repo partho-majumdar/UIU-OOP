@@ -41,7 +41,7 @@ public class Main {
              * ------------ Rule - 02 ---------
              * for (int i = 0; i < icecreamObj.size(); i++) {
              * Icecream individualObj = icecreamObj.get(i);
-             * 
+             *
              * if (individualObj.equals(other)) {
              * flag = false;
              * break;
@@ -60,9 +60,15 @@ public class Main {
             System.out.println(e.toString());
         }
 
-        searchByCompany("Igloo");
+        // search by company
+        System.out.println("Enter company: ");
+        String userCompany = input.next();
+        searchByCompany(userCompany);
+
+        // sort icecream object by price
         sortByPrice();
 
+        // this for loop print all details
         for (Icecream e : icecreamsObject) {
             System.out.println(e.toString());
         }
@@ -72,7 +78,9 @@ public class Main {
     public static void searchByCompany(String company) {
         for (Icecream e : icecreamsObject) {
             if (e.getIcecreamCompany().equals(company)) {
-                System.out.println(e.toString());
+                System.out.println("Icecream type: " + e.getIcecreamType());
+                System.out.println("Icecream company: " + e.getIcecreamCompany());
+                System.out.println("Icecream price: " + e.getIcecreamPrice());
             }
         }
     }
