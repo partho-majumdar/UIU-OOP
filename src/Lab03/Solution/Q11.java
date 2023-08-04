@@ -17,7 +17,6 @@ public class Q11 {
                 ans = individualWord;
             }
         }
-
         System.out.println(ans);
     }
 
@@ -29,7 +28,6 @@ public class Q11 {
         for (int i = 0; i < arr.length; i++) {
             length++;
         }
-
         return length;
     }
 }
