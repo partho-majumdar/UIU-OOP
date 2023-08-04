@@ -30,7 +30,6 @@ public class Q12 {
         } else {
             System.out.println("false");
         }
-
         input.close();
     }
 }
@@ -38,24 +37,24 @@ public class Q12 {
 /*
  * public static void main(String[] args) {
  * Scanner input = new Scanner(System.in);
- * 
+ *
  * System.out.print("Enter number of element in array: ");
  * int n = input.nextInt();
- * 
+ *
  * ArrayList<Integer> list = new ArrayList<>();
- * 
+ *
  * for (int i = 0; i < n; i++) {
  * int value = input.nextInt();
  * list.add(value);
  * }
- * 
+ *
  * int flag = 0;
- * 
+ *
  * ArrayList<Integer> list2 = new ArrayList<>();
- * 
+ *
  * for (int i = 0; i < list.size(); i++) {
  * int num = list.get(i);
- * 
+ *
  * if (i == 0) {
  * list2.add(num);
  * } else {
@@ -67,12 +66,12 @@ public class Q12 {
  * }
  * }
  * }
- * 
+ *
  * if (flag == 1) {
  * System.out.println("true");
  * } else {
  * System.out.println("false");
  * }
- * 
+ *
  * input.close();
  */
