@@ -2,7 +2,7 @@ package Lab07_08.Solution;
 
 import java.util.Calendar;
 
-public abstract class Account {
+public class Account {
     private int id = 0;
     private double balance = 0.0;
     private double annualInterestRate = 0.0;
@@ -19,10 +19,23 @@ public abstract class Account {
         dateCreated = Calendar.getInstance();
     }
 
-    // abstract method
-    public abstract void deposit(double amount);
+    public void deposit(double amount) {
+        if (amount >= 0) {
+            balance += amount;
+            System.out.println("Deposit successful");
+        } else {
+            System.out.println("Invalid amount");
+        }
+    }
 
-    public abstract void withdraw(double amount);
+    public void withdraw(double amount) {
+        if (balance - amount >= 0) {
+            balance -= amount;
+            System.out.println("Withdraw successful");
+        } else {
+            System.out.println("Insufficient balance");
+        }
+    }
 
     public int getId() {
         return id;
