@@ -1,8 +1,8 @@
-package Lab05.Mid_Project.University;
+package Lab05_06.Mid_Project.University;
 
-import Lab05.Mid_Project.University.src.Course;
-import Lab05.Mid_Project.University.src.Faculty;
-import Lab05.Mid_Project.University.src.Student;
+import Lab05_06.Mid_Project.University.src.Course;
+import Lab05_06.Mid_Project.University.src.Faculty;
+import Lab05_06.Mid_Project.University.src.Student;
 
 import java.util.ArrayList;
 import java.util.Scanner;
