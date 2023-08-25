@@ -1,4 +1,4 @@
-package Lab09.Solution;
+package Lab09.Solution.Q1;
 
 public abstract class Shape {
     private double area;
