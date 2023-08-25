@@ -85,7 +85,8 @@ public class Main {
         // Printing details of all universities
         System.out.println("Details of all universities:");
         for (University uni : universities) {
-            System.out.println(uni);
+            System.out.println("University type: " + uni.getUniversityType());
+            System.out.println("University details: " + uni);
         }
     }
 }
