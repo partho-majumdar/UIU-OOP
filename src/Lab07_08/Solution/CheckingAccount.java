@@ -3,6 +3,10 @@ package Lab07_08.Solution;
 public class CheckingAccount extends Account {
     private double overdraftLimit;
 
+    public CheckingAccount() {
+
+    }
+
     public CheckingAccount(int id, double balance, double annualInterestRate, double overdraftLimit) {
         super(id, balance, annualInterestRate);
         this.overdraftLimit = overdraftLimit;
