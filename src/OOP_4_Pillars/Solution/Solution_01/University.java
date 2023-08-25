@@ -60,14 +60,25 @@ public abstract class University implements Comparable<University> {
                 '}';
     }
 
+    // ekhane "this" > "other" boro hole sort in ascending order
     @Override
     public int compareTo(University other) {
-        if (this.dateEstablished > other.dateEstablished) {
+        if (this.dateEstablished < other.dateEstablished) {
             return 1;
         } else if (this.dateEstablished == other.dateEstablished) {
             return 0;
         } else {
             return -1;
+        }
+    }
+
+    public String getUniversityType() {
+        if (this instanceof PublicUniversity) {
+            return "Public";
+        } else if (this instanceof PrivateUniversity) {
+            return "Private";
+        } else {
+            return "Unknown";
         }
     }
 }
