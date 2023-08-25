@@ -19,6 +19,10 @@ public class PublicUniversity extends University {
         this.numberOfHalls = numberOfHalls;
     }
 
+    public boolean getPoliticsAllowed() {
+        return politicsAllowed;
+    }
+
     public void setPoliticsAllowed(boolean politicsAllowed) {
         this.politicsAllowed = politicsAllowed;
     }
@@ -30,7 +34,7 @@ public class PublicUniversity extends University {
 
     @Override
     public boolean isPoliticsAllowed() {
-        return politicsAllowed;
+        return getPoliticsAllowed();
     }
 
     @Override
