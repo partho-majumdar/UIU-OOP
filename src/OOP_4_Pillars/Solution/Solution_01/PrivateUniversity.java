@@ -12,18 +12,20 @@ public class PrivateUniversity extends University {
         this.numberOfTrusteeMembers = numberOfTrusteeMembers;
     }
 
-    @Override
-    public boolean isUgcApproved() {
+    public boolean getUgcApproved() {
         return ugcApproved;
-    }
-
-    @Override
-    public boolean isPoliticsAllowed() {
-        return politicsAllowed;
     }
 
     public void setUgcApproved(boolean ugcApproved) {
         this.ugcApproved = ugcApproved;
+    }
+
+    public boolean getPoliticsAllowed() {
+        return politicsAllowed;
+    }
+
+    public void setPoliticsAllowed(boolean politicsAllowed) {
+        this.politicsAllowed = politicsAllowed;
     }
 
     public int getNumberOfTrusteeMembers() {
@@ -32,6 +34,16 @@ public class PrivateUniversity extends University {
 
     public void setNumberOfTrusteeMembers(int numberOfTrusteeMembers) {
         this.numberOfTrusteeMembers = numberOfTrusteeMembers;
+    }
+
+    @Override
+    public boolean isUgcApproved() {
+        return getUgcApproved();
+    }
+
+    @Override
+    public boolean isPoliticsAllowed() {
+        return false;
     }
 
     @Override
