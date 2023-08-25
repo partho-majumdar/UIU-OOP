@@ -6,6 +6,10 @@ public class SavingsAccount extends Account {
     private String creditCardNumber;
     private Calendar cardExpiryDate;
 
+    public SavingsAccount() {
+
+    }
+
     public SavingsAccount(int id, double balance, double annualInterestRate) {
         super(id, balance, annualInterestRate);
         cardExpiryDate = Calendar.getInstance();
